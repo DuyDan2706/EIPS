@@ -10,6 +10,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 export default function Navbar() {
     const userString = localStorage.getItem("user");
     const userObject = JSON.parse(userString);
+    const handleOut = () => {
+        localStorage.clear();
+    }
     return (
         <div>
             <nav className="bg-[#A8DADC] border-gray-200 px-2 sm:px-4  rounded dark:bg-gray-900 shadow-md ">
@@ -71,6 +74,7 @@ export default function Navbar() {
                         }
                         to="/"
                         className="text-black"
+                        onClick={handleOut}
                     >
                         <div className='flex'>
                             <LogoutIcon className="mr-2" />

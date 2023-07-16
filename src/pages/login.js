@@ -31,20 +31,17 @@ function Login() {
   const handleSubmit = () => {
     navigate("/product");
   };
+  const userString = localStorage.getItem("user");
+  const userObject = JSON.parse(userString);
   useEffect(() => {
-    const userString = localStorage.getItem("user");
-    const userObject = JSON.parse(userString);
-    if (userObject) {
-      if (userObject.role === "admin") {
-        console.log("Navigating to /admin");
-        navigate("/admin");
-      } else if (userObject.role === "sale") {
-        console.log("Navigating to /product");
-        navigate("/product");
-      } else if (userObject.role === "cashier") {
-        console.log("Navigating to /SettingCashier");
-        navigate("/SettingCashier");
-      }
+    if (userObject && userObject.role == "admin") {
+      navigate("/admin")
+    }
+    if (userObject && userObject.role == "sale") {
+      navigate("/product")
+    }
+    if (userObject && userObject.role == "cashier") {
+      navigate("/SettingCashier")
     }
   }, []);
   const dispatch = useDispatch();

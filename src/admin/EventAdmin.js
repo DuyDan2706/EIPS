@@ -269,7 +269,7 @@ function EventAdmin() {
                 </div>
                 <div className='mb-10'>
                   <Slider {...settings}>
-                    {eventListImg.map((item, index) => {
+                    {eventListImg && eventListImg.map((item, index) => {
                       return (
                         <img src={item.img} className='h-52 w-32 p-1' />
                       )
