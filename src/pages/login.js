@@ -34,16 +34,18 @@ function Login() {
   useEffect(() => {
     const userString = localStorage.getItem("user");
     const userObject = JSON.parse(userString);
-    if (userObject.role == "admin") {
-      navigate("/admin")
+    if (userObject) {
+      if (userObject.role === "admin") {
+        console.log("Navigating to /admin");
+        navigate("/admin");
+      } else if (userObject.role === "sale") {
+        console.log("Navigating to /product");
+        navigate("/product");
+      } else if (userObject.role === "cashier") {
+        console.log("Navigating to /SettingCashier");
+        navigate("/SettingCashier");
+      }
     }
-    if (userObject.role == "sale") {
-      navigate("/product")
-    }
-    if (userObject.role == "cashier") {
-      navigate("/SettingCashier")
-    }
-
   }, []);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.login)
